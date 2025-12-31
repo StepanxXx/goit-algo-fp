@@ -30,8 +30,8 @@ def pythagoras_tree(p1, p2, depth, angle = 0):
         depth: Current recursion depth.
         angle: Current angle of the branch.
     """
-    plt.plot([p1[0], p2[0]], [p1[1], p2[1]], color='blue')
     if depth > 0:
+        plt.plot([p1[0], p2[0]], [p1[1], p2[1]], color='blue')
         left_p1 = p2
         left_p2 = get_next_point(p1, p2, angle + 45)
         right_p1 = p2
@@ -39,7 +39,7 @@ def pythagoras_tree(p1, p2, depth, angle = 0):
         pythagoras_tree(left_p1, left_p2, depth - 1, angle + 45)
         pythagoras_tree(right_p1, right_p2, depth -1, angle - 45)
 
-def draw_pythagoras_tree(size = 400, depth = 5):
+def draw_pythagoras_tree(size = 600, depth = 5):
     """
     Initializes the plot and starts the recursive drawing of the Pythagoras tree.
     
@@ -47,7 +47,8 @@ def draw_pythagoras_tree(size = 400, depth = 5):
         size: Size parameter (used to determine initial trunk size).
         depth: Maximum recursion depth.
     """
-    pythagoras_tree(p1 = (size/2, 10), p2 = (size/2, 20), depth = depth)
+    plt.figure(figsize=(size/100, size/100))
+    pythagoras_tree(p1 = (size/2, 10), p2 = (size/2, size / 2), depth = depth)
     plt.axis('off')
     plt.show()
 
